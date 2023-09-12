@@ -1,58 +1,51 @@
+import menu
 from controls import *
 
 
 def main():
+    command = 'Меню'
     while True:
-        print('1.Проект 2.Договор 7.Список проектов 8.Список договоров 0.Завершить работу с программой')
-        command = input('Введите номер команды: ')
-        if command == '1':
-            while True:
-                print('1.Создать проект 2.Добавить договор в проект 3.Завершить договор выбранного проекта '
-                      '7.Список проектов 8.Список договоров 0.Вернуться')
-                command_1 = input('Введите номер команды: ')
-                if command_1 == '0':
-                    break
-                elif command_1 == '1':
+        try:
+            match command:
+                case 'Меню':
+                    com = show_menu(command)
+                    command = menu[command][com]
+                case 'Проект':
+                    com = show_menu(command)
+                    command = menu[command][com]
+                case 'Создать проект':
                     create_project()
-                elif command_1 == '2':
+                    command = 'Проект'
+                case 'Добавить договор в проект':
                     add_contract()
-                elif command_1 == '3':
+                    command = 'Проект'
+                case 'Завершить договор выбранного проекта':
                     complete_project_contract()
-                elif command_1 == '7':
-                    view_projects()
-                elif command_1 == '8':
-                    view_contracts()
-                else:
-                    print('Неверный номер команды')
-        elif command == '2':
-            while True:
-                print('1.Создать договор 2.Подтвердить договор 3.Завершить договор 7.Список проектов '
-                      '8.Список договоров 0.Вернуться')
-                command_2 = input('Введите номер команды: ')
-                if command_2 == '0':
-                    break
-                elif command_2 == '1':
+                    command = 'Проект'
+                case 'Договор':
+                    com = show_menu(command)
+                    command = menu[command][com]
+                case 'Создать договор':
                     create_contract()
-                elif command_2 == '2':
+                    command = 'Договор'
+                case 'Подтвердить договор':
                     confirm_contract()
-                elif command_2 == '3':
+                    command = 'Договор'
+                case 'Завершить договор':
                     complete_contract()
-                elif command_2 == '7':
+                case 'Список проектов':
                     view_projects()
-                elif command_2 == '8':
+                    command = 'Меню'
+                case 'Список договоров':
                     view_contracts()
-                else:
-                    print('Неверный номер команды')
-        elif command == '3':
-
-            complete_contract()
-        elif command == '7':
-            view_projects()
-        elif command == '8':
-            view_contracts()
-        elif command == '0':
-            break
-        else:
+                    command = 'Меню'
+                case 'Вернуться в главное меню':
+                    command = 'Меню'
+                case 'Завершить работу с программой':
+                    break
+        except KeyError as e:
+            print('Неверный номер команды')
+        except ValueError as v:
             print('Неверный номер команды')
 
 

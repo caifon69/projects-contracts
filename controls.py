@@ -3,7 +3,16 @@ from datetime import datetime
 
 from pony.orm import *
 
+from menu import menu
 from models import Contract, Project
+
+
+def show_menu(command):
+    for n, command in menu[command].items():
+        print(f'{n}. {command}', end=' ')
+    print()
+    com = int(input('Введите номер команды: '))
+    return com
 
 
 @db_session
