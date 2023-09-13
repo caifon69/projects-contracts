@@ -1,17 +1,19 @@
-import menu
 from controls import *
 
 
 def main():
     command = 'Меню'
+    command_1 = 'Меню'
     while True:
         try:
             match command:
                 case 'Меню':
                     com = show_menu(command)
+                    command_1 = command
                     command = menu[command][com]
                 case 'Проект':
                     com = show_menu(command)
+                    command_1 = command
                     command = menu[command][com]
                 case 'Создать проект':
                     create_project()
@@ -24,6 +26,7 @@ def main():
                     command = 'Проект'
                 case 'Договор':
                     com = show_menu(command)
+                    command_1 = command
                     command = menu[command][com]
                 case 'Создать договор':
                     create_contract()
@@ -33,12 +36,13 @@ def main():
                     command = 'Договор'
                 case 'Завершить договор':
                     complete_contract()
+                    command = 'Договор'
                 case 'Список проектов':
                     view_projects()
-                    command = 'Меню'
+                    command = command_1
                 case 'Список договоров':
                     view_contracts()
-                    command = 'Меню'
+                    command = command_1
                 case 'Вернуться в главное меню':
                     command = 'Меню'
                 case 'Завершить работу с программой':
@@ -46,7 +50,7 @@ def main():
         except KeyError as e:
             print('Неверный номер команды')
         except ValueError as v:
-            print('Неверный номер команды')
+            print('Команда должна быть целым числом.')
 
 
 if __name__ == '__main__':
