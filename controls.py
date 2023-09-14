@@ -3,8 +3,8 @@ from datetime import datetime
 
 from pony.orm import *
 
-from sup import menu, ContractStatus
 from models import Contract, Project
+from sup import ContractStatus, menu
 
 
 def show_menu(command):
