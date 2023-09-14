@@ -7,9 +7,12 @@ System of Projects and Contracts – is a command line app to manage projects an
    ```
    git clone https://github.com/caifon69/projects-contracts.git
    ```  
-  2. Create and activate a virtual environments:  
+  2. Create and activate a virtual environments: 
+
+Make sure you are located in project repository!    
+
    ```python
-   python -m venv venv
+   python3 -m venv venv
    source venv/bin/activate
    ```
   3. Install requirements:
