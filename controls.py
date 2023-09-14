@@ -164,10 +164,18 @@ def complete_project_contract():
     """
     try:
         project = get_project()
-        name_contract = input('Введите имя договора: ')
-        if name_contract in select(c.name_contract for c in Contract if c.project == Project[project.id]):
-            check_contract_status_for_complete(Contract.get(name_contract=name_contract))
+        if project.contracts:
+            for c in project.contracts:
+                if c.contract_status == ContractStatus.active:
+                    name_contract = input('Введите имя договора: ')
+                    if name_contract in select(c.name_contract for c in Contract if c.project == Project[project.id]):
+                        check_contract_status_for_complete(Contract.get(name_contract=name_contract))
+                    else:
+                        print(f'В проекте {project.name_project} нет договора с таким именем.')
+                    break
+            else:
+                print(f'В проекте {project.name_project} нет активного договора.')
         else:
-            print(f'В проекте {project.name_project} нет договора с таким именем.')
+            print(f'В проекте {project.name_project} нет договоров.')
     except Exception as e:
         print(e)
