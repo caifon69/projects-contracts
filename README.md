@@ -1,6 +1,4 @@
-# iCode Student's Lab
-
-Test task
+# Test task iCode Student's Lab 
 
 System of Projects and Contracts – is a command line app to manage projects and contracts
 
